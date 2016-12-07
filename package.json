@@ -1,0 +1,24 @@
+{
+  "name": "staywithyou",
+  "version": "1.0.0",
+  "description": "StayWithYou application, which can be used to share everything you want to friends",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michellechsy/staywithyou.git"
+  },
+  "author": "Michelle Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michellechsy/staywithyou/issues"
+  },
+  "homepage": "https://github.com/michellechsy/staywithyou#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
