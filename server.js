@@ -25,7 +25,7 @@ app.use(bodyParser()); // get info from html form
 app.set('view engine', 'ejs');  // set up ejs for templating
 
 // required for passport
-app.use(session({ secret: 'isfjdkjdkfjdkf' })); // session secret
+app.use(session({secret: 'isfjdkjdkfjdkf'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());  // login session
 app.use(flash());   // use connect-flash for flash msg stored in session

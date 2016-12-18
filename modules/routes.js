@@ -21,11 +21,20 @@ module.exports = function(app, passport) {
     });
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile',
+        successRedirect : '/home',
         failureRedirect : '/login',
         failureFlash : true
 
     }));
+
+    // ==================================================
+    // ============= Logout ==============================
+    // ==================================================
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
 
     // ==================================================
     // ============= Sign up ==============================
@@ -42,28 +51,53 @@ module.exports = function(app, passport) {
          failureFlash : true
      }));
 
+    app.get('/home', isLoggedIn, function(req, res) {
+
+        res.render('home.ejs', {
+            user: req.user
+        });
+    });
+
     // ==================================================
     // ============= Profile Section ==============================
     // ==================================================
     // Use route middleware to verify logged in user
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-                // get the user out of session and pass to template
-                user: req.user
-            }
-        );
+        res.render('profile', {
+        user: req.user,
+        moments: req.user.moments
+        });
     });
 
+    app.get('/moment', isLoggedIn, function(req, res) {
+        renderMoments(req, res);
+    });
 
-    // ==================================================
-    // ============= Logout ==============================
-    // ==================================================
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+    app.post('/moment', isLoggedIn, function(req, res) {
+        var Moment = require('./moment');
+
+        console.log(req.body.content);
+        var moment = new Moment({
+            user: req.user,
+            content: req.body.content
+        });
+
+        moment.save(function(err, moment) {
+            console.log(moment.user);
+        });
+
+        req.user.moments.push(moment);
+
+        renderMoments(req, res);
     });
 
 };
+function renderMoments(req, res) {
+    res.render('moment', {
+        user: req.user,
+        moments: req.user.moments
+    });
+}
 
 // check if the user is logged in
 function isLoggedIn(req, res, next) {
@@ -73,3 +107,4 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/');
 }
+

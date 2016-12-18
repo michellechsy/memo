@@ -18,7 +18,11 @@ var userSchema = mongoose.Schema({
         token   : String,
         email   : String,
         name    : String
-    }
+    },
+    moments : [{
+        type    : mongoose.Schema.ObjectId,
+        ref     : 'Moment'
+    }]
 });
 
 
@@ -33,4 +37,6 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
+
 module.exports = mongoose.model('User', userSchema);
+
