@@ -1,0 +1,4 @@
+{
+    "dbUri" : "mongodb://localhost/staywithyou",
+    "jwtSecret": "xkl203Idfd2@!Ddd"
+}
