@@ -1,4 +1,4 @@
-// update values for showing in presentational components, validate user's input. 
+// update values for showing in presentational components, validate user's input.
 // using AJAX
 
 import React, { PropTypes } from 'react';
@@ -70,7 +70,13 @@ class SignUpPage extends React.Component {
                 errors : {}
             });
 
-            console.log('The form is valid');
+        console.log('The form is valid');
+        if (location.state && location.state.nextPathname) {
+          this.props.router.replace(location.state.nextPathname)
+        } else {
+          this.props.router.replace('/profile')
+        }
+
         } else {
             const errors = xhr.response.errors ? xhr.response.errors : {};
             errors.summary = xhr.response.message;
@@ -82,7 +88,7 @@ class SignUpPage extends React.Component {
     });
 
     xhr.send(formData);
-    
+
   }
 
   /**

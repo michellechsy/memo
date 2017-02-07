@@ -50,7 +50,13 @@ class LoginPage extends React.Component {
           errors: {}
         });
 
-        console.log('The form is valid');
+        console.log('Logged in successfully.')
+        if (location.state && location.state.nextPathname) {
+          this.props.router.replace(location.state.nextPathname)
+        } else {
+          this.props.router.replace('/profile')
+        }
+
       } else {
         // change the component state
         const errors = xhr.response.errors ? xhr.response.errors : {};
@@ -61,7 +67,7 @@ class LoginPage extends React.Component {
         });
       }
     });
-    
+
     xhr.send(formData);
 
  }

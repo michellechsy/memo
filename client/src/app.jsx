@@ -12,5 +12,5 @@ injectTapEventPlugin();
 ReactDom.render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={browserHistory} routes={routes} />
-  </MuiThemeProvider>), document.getElementById('react-app')
+  </MuiThemeProvider>), document.getElementById('stay-with-you')
 );

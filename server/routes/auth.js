@@ -20,7 +20,7 @@ function validateEmailPassword(payload, errors) {
 
 /**
  * validate sign up form
- * 
+ *
  *  @param {object} payload - the HTTP body message
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
@@ -43,7 +43,7 @@ function validateSignupForm(payload) {
 
     return {
         success : isFormValid,
-        message, 
+        message,
         errors
     };
 
@@ -60,7 +60,7 @@ function validateLoginForm(payload) {
     const errors = {};
     let isFormValid = true;
     let message = '';
-    
+
     validateEmailPassword;
 
     if (!isFormValid) {
@@ -87,7 +87,7 @@ router.post('/signup', (req, res) => {
 
     return res.status(200).end();
 
-}); 
+});
 
 router.post('/login', (req, res) => {
   const validationResult = validateLoginForm(req.body);

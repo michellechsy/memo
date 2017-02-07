@@ -81,7 +81,7 @@
 	  _MuiThemeProvider2.default,
 	  { muiTheme: (0, _getMuiTheme2.default)() },
 	  _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: _routes2.default })
-	), document.getElementById('react-app'));
+	), document.getElementById('stay-with-you'));
 
 /***/ },
 /* 1 */
@@ -34246,6 +34246,10 @@
 
 	var _SignUpPage2 = _interopRequireDefault(_SignUpPage);
 
+	var _Profile = __webpack_require__(469);
+
+	var _Profile2 = _interopRequireDefault(_Profile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = {
@@ -34260,6 +34264,9 @@
 	  }, {
 	    path: '/signup',
 	    component: _SignUpPage2.default
+	  }, {
+	    path: '/profile',
+	    component: _Profile2.default
 	  }]
 	};
 
@@ -34341,6 +34348,8 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _Card = __webpack_require__(390);
+
+	var _reactRouter = __webpack_require__(333);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40962,7 +40971,12 @@
 	            errors: {}
 	          });
 
-	          console.log('The form is valid');
+	          console.log('Logged in successfully.');
+	          if (location.state && location.state.nextPathname) {
+	            _this2.props.router.replace(location.state.nextPathname);
+	          } else {
+	            _this2.props.router.replace('/profile');
+	          }
 	        } else {
 	          // change the component state
 	          var errors = xhr.response.errors ? xhr.response.errors : {};
@@ -43153,7 +43167,7 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // update values for showing in presentational components, validate user's input. 
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // update values for showing in presentational components, validate user's input.
 	// using AJAX
 
 	var SignUpPage = function (_React$Component) {
@@ -43235,6 +43249,11 @@
 	          });
 
 	          console.log('The form is valid');
+	          if (location.state && location.state.nextPathname) {
+	            _this2.props.router.replace(location.state.nextPathname);
+	          } else {
+	            _this2.props.router.replace('/profile');
+	          }
 	        } else {
 	          var errors = xhr.response.errors ? xhr.response.errors : {};
 	          errors.summary = xhr.response.message;
@@ -43379,6 +43398,60 @@
 	};
 
 	exports.default = SignUpForm;
+
+/***/ },
+/* 469 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(333);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// a wrapper for the whole application
+	var Profile = _react2.default.createClass({
+	  displayName: 'Profile',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'top-bar' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'top-bar-right' },
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/logout' },
+	          'Log out'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/signup' },
+	          'Sign up'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/moments' },
+	          'Moments'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Profile;
 
 /***/ }
 /******/ ]);
