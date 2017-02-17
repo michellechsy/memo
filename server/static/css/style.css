@@ -48,6 +48,13 @@ a:hover {
   width: 700px;
 }
 
+.container-left {
+  padding: 10px 15px;
+  margin: 0 auto;
+  text-align: left;
+  width: auto;
+}
+
 .card-heading {
   padding: 16px;
 }

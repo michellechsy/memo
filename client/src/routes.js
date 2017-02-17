@@ -3,10 +3,11 @@ import HomePage from './components/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import Profile from './components/Profile.jsx';
+import LatestPosts from './components/LatestPosts.jsx'
 
 const routes = {
   // base component (wrapper for the whole application).
-  component: Base,
+  // component: Base,
   childRoutes: [
 
     {
@@ -27,6 +28,11 @@ const routes = {
     {
       path: '/profile',
       component: Profile
+    },
+
+    {
+      path: '/posts',
+      component: LatestPosts
     }
 
   ]

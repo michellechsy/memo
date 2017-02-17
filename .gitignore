@@ -39,3 +39,5 @@ jspm_packages
 
 *.iml
 .idea
+
+client/dist
