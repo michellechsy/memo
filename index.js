@@ -9,8 +9,8 @@ require('./server/models').connect(config.dbUri);
 
 const app = express();
 
-app.use(express.static('./server/static/'));
-app.use(express.static('./client/dist/'));
+app.use(express.static(path.join(__dirname, '/server/static/')));
+app.use(express.static(path.join(__dirname, '/client/dist/')));
 
 // for server side
 app.use(bodyParser.urlencoded({ extended: false }));
