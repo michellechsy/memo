@@ -4,6 +4,7 @@
   "description": "StayWithYou application, which can be used to share everything you want to friends",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm run bundle",
     "start": "node index.js",
     "bundle": "webpack"
   },
