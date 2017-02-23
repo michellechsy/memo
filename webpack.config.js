@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/client/dist/js'),
         filename: 'app.js',
-    }, 
+    },
 
     module: {
         // apply loaders to files that meet given conditions
@@ -31,10 +31,10 @@ module.exports = {
                 presets: ["react", "es2015"]
             }
         },
-        
+
         ],
     },
 
     // start webpack in a watch mode
-    watch: true
+    // watch: true
 }
