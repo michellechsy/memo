@@ -4,9 +4,9 @@
   "description": "StayWithYou application, which can be used to share everything you want to friends",
   "main": "index.js",
   "scripts": {
+    "bundle": "webpack",
     "prestart": "npm run bundle",
-    "start": "node index.js",
-    "bundle": "webpack"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -43,9 +43,5 @@
     "nodemon": "^1.11.0",
     "webpack": "^1.14.0"
   },
-  "cacheDirectories": [
-    "client/node_modules",
-    "server/node_modules"
-  ]
 
 }
